@@ -5,6 +5,6 @@ build with:
 ```
 mkdir build
 cd build
-cmake ../
+cmake ..
 make
 ```

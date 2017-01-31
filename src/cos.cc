@@ -8,7 +8,7 @@ int main(int argc, char** argv)
 {
     if(argc != 4)
     {
-        std::cout << "Usage: sin <number of samples> <lower limit> <upper limit>" << std::endl;
+        std::cout << "Usage: cos <number of samples> <lower limit> <upper limit>" << std::endl;
         return -1;
     }
     int num_samples = std::stoi(std::string(argv[1]));
@@ -22,13 +22,13 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    std::ofstream file("sin.data");
+    std::ofstream file("cos.data");
     file << num_samples << " 1 1" << std::endl;
 
     for(int i = 0; i < num_samples; ++i)
     {
         float input = ((float)(rand())) / ((float)RAND_MAX) * range + lower_limit;
-        float output = std::sin(input);
+        float output = std::cos(input);
         file << input << std::endl << output << std::endl;
     }
     return 0; 
