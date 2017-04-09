@@ -31,18 +31,13 @@ int main(int argc, char** argv)
     {
         float input = ((float)(rand())) / ((float)RAND_MAX) * range + lower_limit;
         std::string input_string = std::to_string(input);
-
         std::string eval_string = math_expr;
-        size_t start_pos = eval_string.find("x");
-        if(start_pos == std::string::npos)
+        size_t start_pos = 0;
+        while((start_pos = eval_string.find("x", start_pos)) != std::string::npos)
         {
-            std:: cout << "variable x not found" << std::endl;
-        }
-        if(input >= 0)
-            eval_string.replace(start_pos, 1, input_string); 
-        else
             eval_string.replace(start_pos, 1, "(" + input_string + ")");
-
+            start_pos += input_string.length() + 2;
+        }
         float output = math_eval(infix_to_postfix(eval_string));
         //std::cout << eval_string << "\t->\t" << output << std::endl;
         file << input << std::endl << output << std::endl;
